@@ -1,6 +1,6 @@
-# CDK Java Lambda APIGW RDS
+# CDK Fargate Spring Boot ALB APIGW RDS
 
-This is a demo showing how to deploy a Java Lambda with CRUD functionality behind an API Gateway (HTTP API), backed by an RDS database instance (accessed with RDS Proxy). DB credentials are managed by Secrets Manager and accessed via "AWS Parameters and Secrets Lambda Extension". Database schema migrations are managed via Liquibase in a TriggerFunction construct.
+This is a demo showing how to deploy a Java Spring Boot API with CRUD functionality to Fargate, behind an API Gateway (HTTP API), backed by an RDS database instance (accessed with RDS Proxy). DB credentials are managed by Secrets Manager and injected into the container. Database schema migrations are managed via Liquibase in a TriggerFunction construct.
 
 ## Prerequisites
 
