@@ -1,0 +1,53 @@
+spring:
+  application:
+    name: app
+  http:
+    encoding:
+      charset: UTF-8 # Added to the "Content-Type" header if not set explicitly
+      enabled: true
+      force-response: true # Force the encoding to the configured charset on HTTP responses
+  jackson:
+    mapper:
+      accept-case-insensitive-enums: true
+  jpa:
+    generate-ddl: false
+
+logging:
+  level:
+    root: INFO
+  com:
+    cgtfarmer: INFO
+
+management:
+  endpoint:
+    health:
+      enabled: true
+      show-details: always
+    loggers:
+      enabled: true
+    metrics:
+      enabled: true
+    threaddump:
+      enabled: true
+    heapdump:
+      enabled: true
+    info:
+      enabled: true
+  endpoints:
+    enabled-by-default: false
+    web:
+      exposure:
+        include: "health,info,loggers,metrics,threaddump,heapdump"
+  health:
+    env:
+      enabled: true
+    show-details: always
+  info:
+    env:
+      enabled: true
+
+info:
+  build:
+    artifact: '@project.artifactId@'
+    name: '@project.name@'
+    version: '@project.version@'
