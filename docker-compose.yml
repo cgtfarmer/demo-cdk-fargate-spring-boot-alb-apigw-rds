@@ -8,7 +8,8 @@ services:
     environment:
       MAVEN_CONFIG: /root/.m2
       SERVER_PORT: 80
-      SPRING_PROFILES_ACTIVE: local
+      SPRING_PROFILES_ACTIVE: local # deployed
+      # DB_SECRET: '{"username": "postgres", "password": "super"}'
       SPRING_DATASOURCE_DRIVERCLASSNAME: org.postgresql.Driver
       SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/postgres
       SPRING_DATASOURCE_USERNAME: postgres
