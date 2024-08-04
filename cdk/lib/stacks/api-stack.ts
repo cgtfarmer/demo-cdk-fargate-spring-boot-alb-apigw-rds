@@ -52,10 +52,10 @@ export class ApiStack extends Stack {
       }),
       portMappings: [ { containerPort: 80, protocol: Protocol.TCP, } ],
       healthCheck: {
-        command: [ "CMD-SHELL", "curl -f http://localhost/health || exit 1" ],
+        command: [ "CMD-SHELL", "curl -f http://localhost/actuator/health || exit 1" ],
         interval: Duration.minutes(1),
         retries: 3,
-        startPeriod: Duration.minutes(1),
+        startPeriod: Duration.minutes(2),
         timeout: Duration.minutes(1),
       },
       environment: {
@@ -76,6 +76,7 @@ export class ApiStack extends Stack {
       taskDefinition,
       assignPublicIp: false,
       desiredCount: 2,
+      healthCheckGracePeriod: Duration.minutes(2),
     });
 
     // This direction is incorrect due to causing cyclic dependencies
@@ -92,7 +93,7 @@ export class ApiStack extends Stack {
       port: 80,
       targets: [ fargateService ],
       healthCheck: {
-        path: '/health',
+        path: '/actuator/health',
         interval: Duration.minutes(2),
         timeout: Duration.minutes(1),
       }
